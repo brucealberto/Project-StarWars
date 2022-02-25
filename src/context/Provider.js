@@ -5,13 +5,19 @@ import Context from './Context';
 
 function Provider({ children }) {
   const [data, setData] = useState([]);
+  const [defaultPlanets, setDefaultPlanets] = useState([]);
+  const [filterByName, setFilterByName] = useState('');
+  // const [filterByNumericValues, setFilterByNumericValues] = useState([]);
   useEffect(() => {
     starWarsApi().then((response) => {
       setData(response);
+      setDefaultPlanets(response);
     });
   }, []);
   return (
-    <Context.Provider value={ { data } }>
+    <Context.Provider
+      value={ { data, filterByName, setFilterByName, setData, defaultPlanets } }
+    >
       {children}
     </Context.Provider>
   );
