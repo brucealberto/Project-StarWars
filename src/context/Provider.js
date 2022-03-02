@@ -7,7 +7,7 @@ function Provider({ children }) {
   const [data, setData] = useState([]);
   const [defaultPlanets, setDefaultPlanets] = useState([]);
   const [filterByName, setFilterByName] = useState('');
-  // const [filterByNumericValues, setFilterByNumericValues] = useState([]);
+  const [filterByNumericValues, setFilterByNumericValues] = useState([]);
   useEffect(() => {
     starWarsApi().then((response) => {
       setData(response);
@@ -16,7 +16,15 @@ function Provider({ children }) {
   }, []);
   return (
     <Context.Provider
-      value={ { data, filterByName, setFilterByName, setData, defaultPlanets } }
+      value={ {
+        data,
+        filterByName,
+        setFilterByName,
+        setData,
+        defaultPlanets,
+        filterByNumericValues,
+        setFilterByNumericValues,
+      } }
     >
       {children}
     </Context.Provider>
